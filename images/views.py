@@ -48,7 +48,7 @@ def convert_dates(dates):
     day = days[day_number]
     return day
 
-def gallery(request):
+def image(request):
     list = Album.objects.filter(is_visible=True).order_by('-created')
     paginator = Paginatior(list,8)
 
@@ -59,7 +59,7 @@ def gallery(request):
         albums = paginator.page(1)
     except EmptyPage:
         albums = paginator.page(paginator.num_pages)
-    return render(request, 'gallery.html', {'albums': list })
+    return render(request, 'image.html', {'albums': list })
 
 def handler404(request, exception):
     assert isinstance(request, HttpRequest)
@@ -67,12 +67,12 @@ def handler404(request, exception):
 
 def search_results(request):
 
-    if 'gallery' in request.GET and request.GET["gallery"]:
-        search_term = request.GET.get("gallery")
-        searched_gallery = gallery.search_by_title(search_term)
+    if 'Image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_image = image.search_by_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all-images/search.html',{"message":message,"gallery": searched_gallery})
+        return render(request, 'all-images/search.html',{"message":message,"image": searched_image})
 
     else:
         message = "You haven't searched for any term"
