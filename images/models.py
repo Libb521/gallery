@@ -11,3 +11,9 @@ class Gallery(models.Model):
     createad = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=60, unique=True)
 
+    def __unicode__(self):
+        return self.title
+    
+    class Meta:
+        ordering = ['title']
+
