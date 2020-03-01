@@ -65,3 +65,15 @@ def handler404(request, exception):
     assert isinstance(request, HttpRequest)
     return render(request, 'handler404.html', None, None, 404)
 
+def search_results(request):
+
+    if 'gallery' in request.GET and request.GET["gallery"]:
+        search_term = request.GET.get("gallery")
+        searched_gallery = gallery.search_by_title(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all-images/search.html',{"message":message,"gallery": searched_gallery})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-images/search.html',{"message":message})
