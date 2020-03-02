@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
 import datetime as dt
+from .models import Image
 
 # Create your views here.
 def welcome(request):
@@ -67,9 +68,9 @@ def handler404(request, exception):
 
 def search_results(request):
 
-    if 'Image' in request.GET and request.GET["image"]:
+    if 'image' in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
-        searched_image = image.search_by_title(search_term)
+        searched_image = Image.search_by_title(search_term)
         message = f"{search_term}"
 
         return render(request, 'all-images/search.html',{"message":message,"image": searched_image})

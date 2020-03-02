@@ -41,10 +41,4 @@ class tags(models.Model):
 
     def __str__(self):
         return self.name
-# class GalleryImage(models.Model):
-#     name = models.CharField(max_length=30)
-#     image = ProcessedImageField(upload_to='albums', processors=[ResizeToFit(1280)], format= None)
-#     # album = models.ForeignKey('album', on_delete=models.PROTECT)
-#     created = models.DateTimeField(auto_now_add=True)
-#     width = models.IntegerField(default=0)
-#     height = models.IntegerField(default=0)
+
