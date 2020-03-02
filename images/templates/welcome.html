@@ -1,38 +1,28 @@
-{% load bootstrap3 %}
-{% load static%}
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">%}
-</head>
-<body>
-{% include "navbar.html" %}
-<h1>Welcome to my amazing Gallery</h1>
+{% extends 'all-images/base.html' %}
 
 
-<footer class="footer text-center">
-    <div class="container">
-        <ul class=" list-inline">
-            <li><a href="https://www.linkedin.com/in/elizabeth-otieno-57915821/"><i class="fa fa-linkedin"
-                        aria-hidden="true"></i></a></li>
-            <li><a href="https://www.facebook.com/elizabeth.otieno"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            </li>
-            <li><a href="https://github.com/Libb521"><i class="fa fa-github-alt" aria-hidden="true"></i></a>
-            </li>
-        </ul>
-    </div>
+{% block content %}
 
-    <div class="footer-copyright">
-        <div class="container">
-            © 2020 Copyright &copy; Libby521 ©
-            <a class="grey-text text-lighten-4 right" href="#!">Created by Libby521</a>
-        </div>
-    </div>
 
-</footer>
 
-{% block styles %}
-{% bootstrap_css %}
+       <div class="container">
+           <div class="row">
+        {% for image_item in images %}
+
+        
+                <div class="col-md-6">
+                    <img src="{{image_item.image.url}}" alt="image" data-toggle="modal" data-target="#{{image.name}}{{image.id}}">
+                    <h1>{{image_item.name}}</h1>
+                    <p>{{image_item.description}}</p>
+                </div>
+
+                
+      
+        
+        {% endfor %}
+       </div>
+       </div>
+
 {% endblock %}
-</body>
-</html>
+
+
