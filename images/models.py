@@ -9,7 +9,6 @@ class Image(models.Model):
     title = models.CharField(max_length=60)
     name = models.CharField(max_length=30)
     description = models.TextField(max_length=600)
-    thumb = ProcessedImageField(upload_to='albums', processors=[ResizeToFit(500)], format='JPEG', options={'quality': 90})
     tags = models.CharField(max_length=30)
     createad = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=60, unique=True)
