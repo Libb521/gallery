@@ -50,18 +50,6 @@ def convert_dates(dates):
     day = days[day_number]
     return day
 
-def image(request):
-    list = Album.objects.filter(is_visible=True).order_by('-created')
-    paginator = Paginatior(list,8)
-
-    oafe = request.Gert.get('page')
-    try:
-        albums = paginator.page(page)
-    except PageNotAnInteger:
-        albums = paginator.page(1)
-    except EmptyPage:
-        albums = paginator.page(paginator.num_pages)
-    return render(request, 'image.html', {'albums': list })
 
 def handler404(request, exception):
     assert isinstance(request, HttpRequest)

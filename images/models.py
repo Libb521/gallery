@@ -10,7 +10,7 @@ class Image(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(max_length=600)
     tags = models.CharField(max_length=30)
-    createad = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=60, unique=True)
     width = models.IntegerField(default=0)
     height = models.IntegerField(default=0)
